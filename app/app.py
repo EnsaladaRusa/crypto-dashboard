@@ -1,9 +1,7 @@
 import streamlit as st
 import pandas as pd
 import subprocess
-from app.auth import login
-
-from app.auth import login
+from auth import login
 
 auth = login()
 
