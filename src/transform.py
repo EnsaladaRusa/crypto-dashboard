@@ -22,6 +22,7 @@ df['cambio_24h'] = df['cambio_24h'].round(2)
 df['cambio_24h'] = df['cambio_24h'].replace(-0.00, 0.00)
 
 # guardar limpio
-df.to_csv("data/crypto.csv", index=False)
+df.to_csv("data/crypto.csv", index=False)        # respaldo
+df.to_parquet("data/crypto.parquet", index=False)  # producción
 
 print(df.head())

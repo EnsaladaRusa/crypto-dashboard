@@ -16,7 +16,7 @@ subprocess.run(["python", "src/transform.py"])
 st.set_page_config(layout="wide")
 
 # cargar datos
-df = pd.read_csv("data/crypto.csv")
+df = pd.read_parquet("data/crypto.parquet")
 
 # =========================
 # 1. TÍTULO
