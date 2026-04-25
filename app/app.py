@@ -1,6 +1,15 @@
 import streamlit as st
 import pandas as pd
 import subprocess
+from app.auth import login
+
+from app.auth import login
+
+auth = login()
+
+if not auth:
+    st.warning("Acceso restringido")
+    st.stop()
 
 subprocess.run(["python", "src/ingesta.py"])
 subprocess.run(["python", "src/transform.py"])
