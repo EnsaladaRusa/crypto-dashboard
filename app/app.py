@@ -14,7 +14,7 @@ df = pd.read_csv("data/crypto.csv")
 # =========================
 # 1. TÍTULO
 # =========================
-st.title("📊 Dashboard del Mercado Cripto")
+st.title("Dashboard del Mercado Cripto")
 st.caption("Datos en tiempo real desde API - Análisis de capitalización y variación")
 
 st.divider()
@@ -78,16 +78,14 @@ def color_cambio(val):
         return 'color: green'
     elif val < 0:
         return 'color: red'
-    else:
-        return 'color: gray'
+    return 'color: gray'
 
-st.subheader("📋 Datos detallados")
+styled_df = df.style.format({
+    "precio": "${:,.2f}",
+    "capitalizacion": "${:,.0f}"
+})
 
-st.dataframe(
-    df.style.format({
-        "precio": "${:,.2f}",
-        "capitalizacion": "${:,.0f}"
-    }).applymap(color_cambio, subset=['cambio_24h'])
-)
+styled_df = styled_df.map(color_cambio, subset=["cambio_24h"])
 
+st.dataframe(styled_df)
 
